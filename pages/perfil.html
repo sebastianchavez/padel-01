@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi perfil · Padel Premium Club</title>
+  <meta name="description" content="Gestiona tu perfil, historial de reservas y datos personales en Padel Premium Club.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="perfil" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Mi cuenta</p>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-2">Mi perfil</h1>
+        <p class="text-slate-600 text-lg">Gestiona tus datos y revisa tu historial de reservas.</p>
+      </div>
+    </section>
+
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Stats -->
+        <div id="statsCounters" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"></div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+
+          <!-- Sidebar -->
+          <aside class="lg:col-span-1 space-y-6">
+            <!-- Avatar card -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm text-center">
+              <div id="avatarCard"></div>
+            </div>
+
+            <!-- Cambiar contraseña -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 class="font-bold text-slate-900 mb-4">Cambiar contraseña</h3>
+              <form id="passwordForm" class="space-y-3">
+                <div>
+                  <label class="form-label" for="currentPassword">Contraseña actual</label>
+                  <input type="password" name="currentPassword" id="currentPassword" required class="form-input" placeholder="••••••••">
+                </div>
+                <div>
+                  <label class="form-label" for="newPassword">Nueva contraseña</label>
+                  <input type="password" name="newPassword" id="newPassword" required class="form-input" placeholder="Mínimo 6 caracteres">
+                </div>
+                <div>
+                  <label class="form-label" for="confirmPassword">Confirmar nueva</label>
+                  <input type="password" name="confirmPassword" id="confirmPassword" required class="form-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-outline w-full">Cambiar contraseña</button>
+              </form>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 class="font-bold text-slate-900 mb-4">Datos personales</h3>
+              <form id="profileForm" class="space-y-3">
+                <div>
+                  <label class="form-label" for="profile-name">Nombre</label>
+                  <input type="text" name="name" id="profile-name" required class="form-input">
+                </div>
+                <div>
+                  <label class="form-label" for="profile-email">Correo</label>
+                  <input type="email" name="email" id="profile-email" required class="form-input">
+                </div>
+                <div>
+                  <label class="form-label" for="profile-phone">Teléfono</label>
+                  <input type="tel" name="phone" id="profile-phone" required class="form-input">
+                </div>
+                <div>
+                  <label class="form-label" for="profile-dni">DNI</label>
+                  <input type="text" name="dni" id="profile-dni" class="form-input">
+                </div>
+                <button type="submit" class="btn-primary w-full">Guardar cambios</button>
+              </form>
+            </div>
+          </aside>
+
+          <!-- Main -->
+          <div class="lg:col-span-2">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="text-2xl font-black text-slate-900">Mis reservas</h2>
+                <p class="text-sm text-slate-500">Historial completo de tus reservas</p>
+              </div>
+              <a href="reserva.html" class="btn-primary">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Nueva reserva
+              </a>
+            </div>
+
+            <!-- Filtros -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              <button data-filter="todas" class="tab-btn active">Todas</button>
+              <button data-filter="proximas" class="tab-btn">Próximas</button>
+              <button data-filter="pendientes" class="tab-btn">Pendientes pago</button>
+              <button data-filter="completadas" class="tab-btn">Completadas</button>
+              <button data-filter="canceladas" class="tab-btn">Canceladas</button>
+            </div>
+
+            <!-- Lista -->
+            <div id="historialList" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (function () {
+      const user = Session.current();
+      const avatar = document.getElementById('avatarCard');
+      if (avatar && user) {
+        avatar.innerHTML = `
+          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center text-white text-3xl font-black mb-4">
+            ${user.name.charAt(0).toUpperCase()}
+          </div>
+          <h3 class="font-bold text-slate-900 text-lg">${user.name}</h3>
+          <p class="text-sm text-slate-500">${user.email}</p>
+          ${user.phone ? `<p class="text-xs text-slate-400 mt-1">${user.phone}</p>` : ''}
+          ${user.role === 'admin' ? '<span class="inline-block mt-3 px-3 py-1 text-xs font-bold bg-yellow-100 text-yellow-700 rounded-full">Administrador</span>' : ''}
+        `;
+      }
+    })();
+  </script>
+</body>
+</html>

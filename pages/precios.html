@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios y Membresías · Padel Premium Club</title>
+  <meta name="description" content="Tabla de precios por pista, tarifas por hora y membresías mensuales de Padel Premium Club.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="precios" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Precios y membresías</p>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Tarifas transparentes</h1>
+        <p class="text-slate-600 text-lg max-w-2xl">Paga por hora, por mes o elige un plan. Sin sorpresas, sin letra chica.</p>
+      </div>
+    </section>
+
+    <!-- Tabla de precios por pista -->
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Tarifas por pista</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">Alquiler por hora</h2>
+          <p class="mt-6 text-slate-600 max-w-2xl mx-auto">Reserva tu pista favorita al mejor precio. Sin recargos por iluminación.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead class="bg-slate-50 border-b border-slate-200">
+                <tr>
+                  <th class="px-6 py-4 font-bold text-slate-900">Pista</th>
+                  <th class="px-6 py-4 font-bold text-slate-900">Tipo</th>
+                  <th class="px-6 py-4 font-bold text-slate-900">Superficie</th>
+                  <th class="px-6 py-4 font-bold text-slate-900 text-right">1 hora</th>
+                  <th class="px-6 py-4 font-bold text-slate-900 text-right">1.5 horas</th>
+                  <th class="px-6 py-4 font-bold text-slate-900 text-right">2 horas</th>
+                  <th class="px-6 py-4 font-bold text-slate-900"></th>
+                </tr>
+              </thead>
+              <tbody id="preciosTabla" class="divide-y divide-slate-200"></tbody>
+            </table>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500 mt-4 text-center">* Tarifas aplican para reservas de lunes a domingo. Incluye iluminación LED.</p>
+      </div>
+    </section>
+
+    <!-- Membresías / Planes -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Membresías mensuales</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">Elige tu plan</h2>
+          <p class="mt-6 text-slate-600 max-w-2xl mx-auto">Si juegas seguido, una membresía te ahorra hasta 50% frente al alquiler por hora.</p>
+        </div>
+
+        <!-- Toggle mensual/anual -->
+        <div class="flex justify-center mb-8">
+          <div class="inline-flex items-center bg-white border border-slate-200 rounded-lg p-1">
+            <button id="btnMensual" class="px-5 py-2 rounded-md text-sm font-bold bg-lime-500 text-slate-900">Mensual</button>
+            <button id="btnAnual" class="px-5 py-2 rounded-md text-sm font-bold text-slate-600">Anual <span class="text-xs text-lime-700">-15%</span></button>
+          </div>
+        </div>
+
+        <div id="planesGrid" class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto"></div>
+      </div>
+    </section>
+
+    <!-- Servicios individuales -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Servicios individuales</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">Tarifas puntuales</h2>
+        </div>
+        <div id="serviciosIndividuales" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-lime-500 to-green-700 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">¿Convencido?</h2>
+        <p class="text-lg text-lime-50 mb-8">Reserva tu primera pista hoy. Paga en línea y obtén 10% de descuento en tu primera reserva.</p>
+        <a href="reserva.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-100 text-slate-900 font-black text-lg rounded-lg shadow-2xl transition-all hover:-translate-y-1">
+          Reservar ahora
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (function () {
+      // Tabla de precios
+      const tabla = document.getElementById('preciosTabla');
+      if (tabla) {
+        tabla.innerHTML = Catalog.pistas().map(p => `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="px-6 py-4 font-semibold text-slate-900">${p.nombre}</td>
+            <td class="px-6 py-4 text-sm">
+              <span class="px-2 py-1 text-xs font-bold ${p.techada ? 'bg-slate-100 text-slate-700' : 'bg-orange-100 text-orange-700'} rounded">${p.techada ? 'Techada' : 'Outdoor'}</span>
+            </td>
+            <td class="px-6 py-4 text-sm text-slate-600">${p.superficie}</td>
+            <td class="px-6 py-4 text-right font-bold text-lime-700">${formatCurrency(p.precioHora)}</td>
+            <td class="px-6 py-4 text-right font-bold text-lime-700">${formatCurrency(p.precioHora * 1.5)}</td>
+            <td class="px-6 py-4 text-right font-bold text-lime-700">${formatCurrency(p.precioHora * 2)}</td>
+            <td class="px-6 py-4 text-right">
+              <a href="reserva.html?pista=${p.id}" class="inline-flex items-center px-3 py-1.5 bg-lime-500 hover:bg-lime-600 text-slate-900 text-xs font-bold rounded-md">Reservar</a>
+            </td>
+          </tr>`).join('');
+      }
+
+      // Toggle planes
+      let isAnual = false;
+      const btnMensual = document.getElementById('btnMensual');
+      const btnAnual = document.getElementById('btnAnual');
+      const planesGrid = document.getElementById('planesGrid');
+
+      const renderPlanes = () => {
+        if (planesGrid) {
+          planesGrid.innerHTML = Catalog.planes().map(p => {
+            const precio = isAnual ? Math.round(p.precioAnual / 12) : p.precioMensual;
+            const periodo = isAnual ? '/mes (anual)' : '/mes';
+            return `
+              <div class="bg-white border-2 ${p.color} rounded-2xl p-7 relative ${p.destacado ? 'shadow-xl ring-2 ring-lime-200' : ''} card-hover">
+                ${p.destacado ? '<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-lime-500 text-slate-900 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full">Más popular</span>' : ''}
+                <h3 class="text-2xl font-black text-slate-900 mb-2">${p.nombre}</h3>
+                <div class="mb-6">
+                  <span class="text-5xl font-black text-slate-900">${formatCurrency(precio)}</span>
+                  <span class="text-slate-500 text-sm">${periodo}</span>
+                </div>
+                ${isAnual ? `<p class="text-xs text-lime-700 font-bold mb-3">Ahorras ${formatCurrency(p.precioMensual * 12 - p.precioAnual)} al año</p>` : ''}
+                <ul class="space-y-2 text-sm text-slate-700 mb-7">
+                  ${p.caracteristicas.map(c => `
+                    <li class="flex items-start gap-2">
+                      <svg class="w-5 h-5 text-lime-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                      <span>${c}</span>
+                    </li>`).join('')}
+                </ul>
+                <a href="registro.html" class="${p.destacado ? 'btn-primary' : 'btn-outline'} w-full">Elegir ${p.nombre}</a>
+              </div>`;
+          }).join('');
+        }
+      };
+
+      renderPlanes();
+
+      if (btnMensual && btnAnual) {
+        btnMensual.onclick = () => {
+          isAnual = false;
+          btnMensual.classList.add('bg-lime-500', 'text-slate-900');
+          btnMensual.classList.remove('text-slate-600');
+          btnAnual.classList.remove('bg-lime-500', 'text-slate-900');
+          btnAnual.classList.add('text-slate-600');
+          renderPlanes();
+        };
+        btnAnual.onclick = () => {
+          isAnual = true;
+          btnAnual.classList.add('bg-lime-500', 'text-slate-900');
+          btnAnual.classList.remove('text-slate-600');
+          btnMensual.classList.remove('bg-lime-500', 'text-slate-900');
+          btnMensual.classList.add('text-slate-600');
+          renderPlanes();
+        };
+      }
+
+      // Servicios individuales
+      const serviciosInd = [
+        { titulo: 'Alquiler de palas', descripcion: 'Palas de las mejores marcas (Bullpadel, Adidas, Nox).', precio: 15 },
+        { titulo: 'Pack 3 pelotas', descripcion: 'Tubos de pelotas Head Padel Pro.', precio: 25 },
+        { titulo: 'Clase individual (1h)', descripcion: 'Con coach personal certificado.', precio: 80 },
+        { titulo: 'Clase grupal (2h)', descripcion: 'Hasta 4 jugadores con coach.', precio: 50 },
+        { titulo: 'Grabación en vídeo', descripcion: 'Análisis de tu juego en HD.', precio: 40 },
+        { titulo: 'Toalla premium', descripcion: 'Toalla de microfibra del club.', precio: 20 }
+      ];
+      const cont = document.getElementById('serviciosIndividuales');
+      if (cont) {
+        cont.innerHTML = serviciosInd.map(s => `
+          <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-start justify-between gap-3 card-hover">
+            <div>
+              <h4 class="font-bold text-slate-900">${s.titulo}</h4>
+              <p class="text-sm text-slate-600 mt-1">${s.descripcion}</p>
+            </div>
+            <div class="text-right">
+              <p class="font-black text-xl text-lime-700">${formatCurrency(s.precio)}</p>
+              <p class="text-xs text-slate-500">por unidad</p>
+            </div>
+          </div>`).join('');
+      }
+    })();
+  </script>
+</body>
+</html>

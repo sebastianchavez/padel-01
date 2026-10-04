@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión · Padel Premium Club</title>
+  <meta name="description" content="Inicia sesión en tu cuenta de Padel Premium Club para gestionar tus reservas de pádel.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main class="auth-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+
+        <!-- Form -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+          <div class="mb-6">
+            <h1 class="text-3xl font-black text-slate-900 mb-2">Bienvenido de vuelta</h1>
+            <p class="text-slate-600">Inicia sesión para gestionar tus reservas.</p>
+          </div>
+
+          <form id="loginForm" class="space-y-5">
+            <div>
+              <label class="form-label" for="email">Correo electrónico</label>
+              <input type="email" name="email" id="email" required class="form-input" placeholder="tu@correo.com" autocomplete="email">
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="form-label mb-0" for="password">Contraseña</label>
+                <a href="recuperar.html" class="text-sm text-lime-700 hover:text-lime-900 font-semibold">¿Olvidaste tu contraseña?</a>
+              </div>
+              <input type="password" name="password" id="password" required class="form-input" placeholder="••••••••" autocomplete="current-password">
+            </div>
+            <label class="flex items-center gap-2 text-sm text-slate-600">
+              <input type="checkbox" name="remember" class="rounded text-lime-500 focus:ring-lime-500">
+              Mantener sesión iniciada
+            </label>
+            <button type="submit" class="btn-primary w-full">
+              Iniciar sesión
+            </button>
+          </form>
+
+          <div class="relative my-6">
+            <div class="divider-text">o</div>
+          </div>
+
+          <div class="text-center text-sm text-slate-600">
+            ¿Aún no tienes cuenta? <a href="registro.html" class="text-lime-700 hover:text-lime-900 font-bold">Crea una aquí</a>
+          </div>
+        </div>
+
+        <!-- Demo credentials + image -->
+        <div class="hidden lg:block">
+          <div class="bg-gradient-to-br from-lime-500 to-green-700 rounded-2xl p-10 text-white shadow-2xl">
+            <div class="text-center mb-8">
+              <div class="w-20 h-20 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-4">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 1 0 9.5 16h.5v3.5a1.5 1.5 0 0 0 3 0V16h.5A6.5 6.5 0 0 0 9.5 3z"/></svg>
+              </div>
+              <h3 class="text-2xl font-black mb-2">Cuenta de demostración</h3>
+              <p class="text-lime-50 text-sm">Usa estas credenciales para probar el sistema</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 space-y-3 text-sm">
+              <div class="flex justify-between items-center pb-3 border-b border-white/20">
+                <span class="text-lime-100">Email</span>
+                <code class="font-mono bg-white/20 px-2 py-1 rounded">demo@padel.com</code>
+              </div>
+              <div class="flex justify-between items-center pb-3 border-b border-white/20">
+                <span class="text-lime-100">Contraseña</span>
+                <code class="font-mono bg-white/20 px-2 py-1 rounded">123456</code>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-lime-100">Incluye</span>
+                <span class="text-xs">5 reservas precargadas</span>
+              </div>
+            </div>
+            <p class="text-xs text-lime-100 text-center mt-6">Las reservas precargadas muestran distintos estados (confirmada, pendiente, completada y cancelada) para que puedas probar el flujo completo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

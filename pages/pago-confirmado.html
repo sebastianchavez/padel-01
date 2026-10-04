@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprobante de pago · Padel Premium Club</title>
+  <meta name="description" content="Tu pago fue procesado con éxito. Aquí tienes tu comprobante.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="pago-confirmado" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="py-12 bg-slate-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div id="reciboContent"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

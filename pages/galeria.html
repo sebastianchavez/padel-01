@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería · Padel Premium Club</title>
+  <meta name="description" content="Galería de fotos de Padel Premium Club: pistas, torneos, clases, eventos e instalaciones.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="galeria" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Galería</p>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Momentos en Padel Premium</h1>
+        <p class="text-slate-600 text-lg max-w-2xl">Pistas, torneos, clases y eventos que vivimos día a día.</p>
+      </div>
+    </section>
+
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Filtros -->
+        <div class="flex flex-wrap gap-2 mb-8 justify-center" id="filterBtns">
+          <button data-galeria-filter="todas" class="tab-btn active">Todas</button>
+          <button data-galeria-filter="pistas" class="tab-btn">Pistas</button>
+          <button data-galeria-filter="clases" class="tab-btn">Clases</button>
+          <button data-galeria-filter="torneos" class="tab-btn">Torneos</button>
+          <button data-galeria-filter="eventos" class="tab-btn">Eventos</button>
+          <button data-galeria-filter="instalaciones" class="tab-btn">Instalaciones</button>
+        </div>
+
+        <!-- Grid -->
+        <div id="galeriaGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <button class="lightbox-close" onclick="GaleriaApp.closeLightbox()" aria-label="Cerrar">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <button class="lightbox-nav prev" onclick="GaleriaApp.prev()" aria-label="Anterior">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <img id="lightboxImg" class="lightbox-img" alt="">
+      <button class="lightbox-nav next" onclick="GaleriaApp.next()" aria-label="Siguiente">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <div id="lightboxCounter" class="absolute top-6 left-6 text-white text-sm bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full"></div>
+    </div>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

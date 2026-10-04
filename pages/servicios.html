@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios · Padel Premium Club</title>
+  <meta name="description" content="Conoce todos los servicios de Padel Premium Club: alquiler de pistas, escuela, torneos, eventos sociales y más.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="servicios" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Nuestros servicios</p>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Más que pistas de pádel</h1>
+        <p class="text-slate-600 text-lg max-w-2xl">Ofrecemos un completo club deportivo: alquiler de pistas, escuela, torneos, eventos y entrenamiento personalizado.</p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="serviciosList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Nuestras pistas</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">6 instalaciones de élite</h2>
+        </div>
+        <div id="pistasList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div class="text-center mt-12">
+          <a href="reserva.html" class="btn-primary inline-flex">Reservar una pista</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Horarios</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">Estamos abiertos cuando lo necesites</h2>
+        </div>
+        <div class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <div id="horariosList" class="space-y-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-r from-lime-500 to-green-700 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">¿Tienes algo en mente?</h2>
+        <p class="text-lg text-lime-50 mb-8">Hablemos sobre tu evento, torneo o clase personalizada.</p>
+        <a href="contacto.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-100 text-slate-900 font-black text-lg rounded-lg shadow-2xl transition-all hover:-translate-y-1">
+          Contáctanos
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (function () {
+      // Render servicios
+      const list = document.getElementById('serviciosList');
+      if (list) {
+        list.innerHTML = Catalog.servicios().map(s => `
+          <div class="card-hover bg-white rounded-xl p-6 border border-slate-200" data-reveal>
+            <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center text-white mb-4">
+              ${UI.icons[s.icono] || UI.icons.padel}
+            </div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">${s.titulo}</h3>
+            <p class="text-sm text-slate-600 mb-4">${s.descripcion}</p>
+            <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+              <div class="text-sm font-bold text-lime-700">Desde ${formatCurrency(s.precioDesde)}</div>
+              <a href="reserva.html" class="text-lime-700 hover:text-lime-900 font-semibold text-sm">Reservar →</a>
+            </div>
+          </div>`).join('');
+      }
+
+      // Render pistas
+      const pl = document.getElementById('pistasList');
+      if (pl) {
+        pl.innerHTML = Catalog.pistas().map(p => `
+          <div class="court-card overflow-hidden" data-reveal>
+            <div class="court-img">
+              <img src="${UI.pistaImage(p)}" alt="${p.nombre}" loading="lazy">
+              <span class="absolute top-3 left-3 px-2 py-1 text-xs font-bold ${p.techada ? 'bg-slate-900/80 text-white' : 'bg-orange-500/90 text-white'} rounded">${p.techada ? 'Techada' : 'Outdoor'}</span>
+            </div>
+            <div class="p-5">
+              <span class="inline-block px-2 py-0.5 text-xs font-bold bg-lime-100 text-lime-700 rounded mb-2">${p.tipo}</span>
+              <h3 class="font-bold text-slate-900 mb-1">${p.nombre}</h3>
+              <p class="text-sm text-slate-600 mb-3 line-clamp-2">${p.descripcion}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                ${p.servicios.map(s => `<span class="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded">${s}</span>`).join('')}
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                <div>
+                  <div class="text-2xl font-black text-lime-700">${formatCurrency(p.precioHora)}</div>
+                  <div class="text-xs text-slate-500">por hora</div>
+                </div>
+                <a href="reserva.html?pista=${p.id}" class="inline-flex items-center gap-1 px-3 py-1.5 bg-lime-500 hover:bg-lime-600 text-slate-900 text-sm font-semibold rounded-md">
+                  Reservar
+                </a>
+              </div>
+            </div>
+          </div>`).join('');
+      }
+
+      // Render horarios
+      const hl = document.getElementById('horariosList');
+      if (hl) {
+        hl.innerHTML = Catalog.horarios().map(h => `
+          <div class="flex justify-between items-center py-3 border-b border-slate-100 last:border-0">
+            <span class="font-semibold text-slate-900">${h.dia}</span>
+            <div class="text-right">
+              <p class="text-slate-700 font-medium">${h.atencion}</p>
+              <p class="text-xs text-slate-500">Reservas: ${h.reservas}</p>
+            </div>
+          </div>`).join('');
+      }
+    })();
+  </script>
+</body>
+</html>

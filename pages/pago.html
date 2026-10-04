@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagar reserva · Padel Premium Club</title>
+  <meta name="description" content="Paga tu reserva de pista de pádel con total seguridad. Tarjeta, Yape, transferencia o efectivo.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="pago" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Pago seguro</p>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Pagar reserva</h1>
+        <p class="text-slate-600 text-lg">Elige tu método de pago preferido. Todos son seguros y procesados encriptados.</p>
+      </div>
+    </section>
+
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+
+          <div class="lg:col-span-2 space-y-6">
+
+            <!-- Método de pago - tabs -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="methodTabs">
+              <button data-method-tab="tarjeta" class="border-2 border-lime-500 bg-lime-50 rounded-xl p-4 text-center transition">
+                <span class="block font-black text-lime-700">Tarjeta</span>
+                <span class="text-xs text-slate-500">Crédito/Débito</span>
+              </button>
+              <button data-method-tab="yape" class="border-2 border-slate-200 rounded-xl p-4 text-center transition hover:border-lime-400">
+                <span class="block font-black text-slate-700">Yape</span>
+                <span class="text-xs text-slate-500">Inmediato</span>
+              </button>
+              <button data-method-tab="transferencia" class="border-2 border-slate-200 rounded-xl p-4 text-center transition hover:border-lime-400">
+                <span class="block font-black text-slate-700">Transferencia</span>
+                <span class="text-xs text-slate-500">BCP/Interbank</span>
+              </button>
+              <button data-method-tab="efectivo" class="border-2 border-slate-200 rounded-xl p-4 text-center transition hover:border-lime-400">
+                <span class="block font-black text-slate-700">Efectivo</span>
+                <span class="text-xs text-slate-500">En recepción</span>
+              </button>
+            </div>
+
+            <!-- TARJETA -->
+            <div id="method-tarjeta" data-method-panel class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Pago con tarjeta</h3>
+              <p class="text-sm text-slate-500 mb-5">Aceptamos Visa, Mastercard, American Express y Discover. Datos cifrados SSL.</p>
+              <form id="tarjetaForm" class="space-y-4">
+                <div>
+                  <label class="form-label" for="tarjeta-titular">Titular de la tarjeta</label>
+                  <input type="text" name="titular" id="tarjeta-titular" required class="form-input" placeholder="Como aparece en la tarjeta" autocomplete="cc-name">
+                </div>
+                <div>
+                  <label class="form-label" for="tarjeta-numero">Número de tarjeta</label>
+                  <input type="text" name="numero" id="tarjeta-numero" required class="form-input" placeholder="1234 5678 9012 3456" inputmode="numeric" autocomplete="cc-number">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="form-label" for="tarjeta-vencimiento">Vencimiento</label>
+                    <input type="text" name="vencimiento" id="tarjeta-vencimiento" required class="form-input" placeholder="MM/AA" inputmode="numeric" autocomplete="cc-exp">
+                  </div>
+                  <div>
+                    <label class="form-label" for="tarjeta-cvv">CVV</label>
+                    <input type="text" name="cvv" id="tarjeta-cvv" required class="form-input" placeholder="123" inputmode="numeric" autocomplete="cc-csc" maxlength="4">
+                  </div>
+                </div>
+                <button type="submit" class="btn-primary w-full" data-paying>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                  Pagar de forma segura
+                </button>
+              </form>
+            </div>
+
+            <!-- YAPE -->
+            <div id="method-yape" data-method-panel class="hidden bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Pago con Yape</h3>
+              <p class="text-sm text-slate-500 mb-5">Yapea al <strong class="text-slate-900">987 654 321</strong> y registra el número de operación.</p>
+              <div class="bg-lime-50 border border-lime-200 rounded-xl p-4 mb-5 text-sm">
+                <p class="font-bold text-lime-900 mb-1">Importante:</p>
+                <p class="text-lime-800">Una vez realizado el Yape, ingresa el número de operación de 8 dígitos que aparece en tu app. Validaremos manualmente en menos de 5 minutos.</p>
+              </div>
+              <form id="yapeForm" class="space-y-4">
+                <div>
+                  <label class="form-label" for="yape-celular">Tu número de celular Yape</label>
+                  <input type="tel" name="celular" id="yape-celular" required class="form-input" placeholder="987 654 321">
+                </div>
+                <div>
+                  <label class="form-label" for="yape-operacion">Número de operación</label>
+                  <input type="text" name="operacion" id="yape-operacion" required class="form-input" placeholder="12345678" inputmode="numeric">
+                </div>
+                <button type="submit" class="btn-primary w-full" data-paying>
+                  Confirmar pago Yape
+                </button>
+              </form>
+            </div>
+
+            <!-- TRANSFERENCIA -->
+            <div id="method-transferencia" data-method-panel class="hidden bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Transferencia bancaria</h3>
+              <p class="text-sm text-slate-500 mb-5">Transfiere a cualquiera de nuestras cuentas y registra la operación.</p>
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5 text-sm space-y-2">
+                <div class="flex justify-between"><span class="text-slate-600">BCP Soles:</span><span class="font-mono font-bold">194-123456789-0</span></div>
+                <div class="flex justify-between"><span class="text-slate-600">Interbank Soles:</span><span class="font-mono font-bold">200-3000123456</span></div>
+                <div class="flex justify-between"><span class="text-slate-600">BBVA Soles:</span><span class="font-mono font-bold">0011-0300-1234567890</span></div>
+                <div class="pt-2 mt-2 border-t border-slate-200 text-xs text-slate-500">Titular: Padel Premium Club SAC · RUC: 20123456789</div>
+              </div>
+              <form id="transferForm" class="space-y-4">
+                <div>
+                  <label class="form-label" for="transfer-banco">Banco de origen</label>
+                  <select name="banco" id="transfer-banco" required class="form-input">
+                    <option value="">Selecciona el banco</option>
+                    <option value="BCP">BCP</option>
+                    <option value="Interbank">Interbank</option>
+                    <option value="BBVA">BBVA</option>
+                    <option value="Scotiabank">Scotiabank</option>
+                    <option value="Yape">Yape (cuenta)</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label" for="transfer-operacion">Número de operación</label>
+                  <input type="text" name="operacion" id="transfer-operacion" required class="form-input" placeholder="12345678" inputmode="numeric">
+                </div>
+                <button type="submit" class="btn-primary w-full" data-paying>
+                  Confirmar transferencia
+                </button>
+              </form>
+            </div>
+
+            <!-- EFECTIVO -->
+            <div id="method-efectivo" data-method-panel class="hidden bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Pago en efectivo</h3>
+              <p class="text-sm text-slate-500 mb-5">Paga directamente en nuestra sede antes de tu hora de juego.</p>
+              <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-5 text-sm">
+                <p class="font-bold text-yellow-900 mb-1">Importante:</p>
+                <p class="text-yellow-800">Tu reserva quedará registrada pero sin pago. Debes acercarte a recepción al menos 15 minutos antes de tu hora reservada para pagar en efectivo y validar tu entrada.</p>
+              </div>
+              <form id="efectivoForm" class="space-y-4">
+                <div>
+                  <label class="form-label" for="efectivo-nombre">Nombre completo</label>
+                  <input type="text" name="nombre" id="efectivo-nombre" required class="form-input" placeholder="Tu nombre completo">
+                </div>
+                <button type="submit" class="btn-primary w-full" data-paying>
+                  Confirmar reserva (pago en recepción)
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- SIDEBAR - RESUMEN -->
+          <aside class="lg:col-span-1">
+            <div id="pagoResumen"></div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 mt-4 text-sm text-slate-600">
+              <p class="flex items-start gap-2 mb-3">
+                <svg class="w-5 h-5 text-lime-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <span><strong>Pago 100% seguro.</strong> Tus datos viajan cifrados con SSL/TLS.</span>
+              </p>
+              <p class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-lime-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>Recibirás un comprobante con código de operación al finalizar.</span>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

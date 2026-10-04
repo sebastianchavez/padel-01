@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservar pista · Padel Premium Club</title>
+  <meta name="description" content="Reserva tu pista de pádel en 4 pasos: elige pista, fecha y hora, confirma y paga.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="reserva" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Reserva tu pista</p>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Reservar</h1>
+        <p class="text-slate-600 text-lg">Sigue los 4 pasos para asegurar tu lugar en la pista.</p>
+      </div>
+    </section>
+
+    <section class="py-12 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- STEPPER -->
+        <div class="flex items-center mb-10" id="stepper">
+          <div class="flex items-center">
+            <div class="step-circle active" data-step="1">1</div>
+            <div class="ml-3 hidden sm:block">
+              <div class="text-xs text-slate-500">Paso 1</div>
+              <div class="text-sm font-bold text-slate-900" data-step-label="1">Pista</div>
+            </div>
+          </div>
+          <div class="step-line"></div>
+          <div class="flex items-center">
+            <div class="step-circle" data-step="2">2</div>
+            <div class="ml-3 hidden sm:block">
+              <div class="text-xs text-slate-500">Paso 2</div>
+              <div class="text-sm font-bold text-slate-500" data-step-label="2">Fecha y hora</div>
+            </div>
+          </div>
+          <div class="step-line"></div>
+          <div class="flex items-center">
+            <div class="step-circle" data-step="3">3</div>
+            <div class="ml-3 hidden sm:block">
+              <div class="text-xs text-slate-500">Paso 3</div>
+              <div class="text-sm font-bold text-slate-500" data-step-label="3">Confirmar</div>
+            </div>
+          </div>
+          <div class="step-line"></div>
+          <div class="flex items-center">
+            <div class="step-circle" data-step="4">4</div>
+            <div class="ml-3 hidden sm:block">
+              <div class="text-xs text-slate-500">Paso 4</div>
+              <div class="text-sm font-bold text-slate-500" data-step-label="4">Finalizar</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+
+          <!-- PANELES -->
+          <div class="lg:col-span-2 space-y-6">
+
+            <!-- STEP 1 - Pista -->
+            <div id="step1" class="step-panel bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div class="mb-5">
+                <h2 class="text-2xl font-black text-slate-900 mb-1">Elige tu pista</h2>
+                <p class="text-sm text-slate-600">Selecciona la pista donde quieres jugar.</p>
+              </div>
+              <div id="step1Grid" class="space-y-4"></div>
+            </div>
+
+            <!-- STEP 2 - Fecha y hora -->
+            <div id="step2" class="step-panel hidden bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div class="mb-5">
+                <h2 class="text-2xl font-black text-slate-900 mb-1">Fecha y horario</h2>
+                <p class="text-sm text-slate-600">Selecciona el día, duración y hora que prefieras.</p>
+              </div>
+
+              <div id="pistaInfo" class="bg-lime-50 border border-lime-200 rounded-xl p-4 mb-5 flex items-center justify-between gap-3"></div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-5">
+                <div>
+                  <label class="form-label" for="reservaFecha">Fecha</label>
+                  <input type="date" id="reservaFecha" class="form-input" required>
+                </div>
+                <div>
+                  <label class="form-label" for="reservaDuracion">Duración</label>
+                  <select id="reservaDuracion" class="form-input">
+                    <option value="1">1 hora</option>
+                    <option value="1.5">1.5 horas</option>
+                    <option value="2" selected>2 horas</option>
+                    <option value="3">3 horas</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="form-label">Horarios disponibles</label>
+                <div id="slotsContainer" class="bg-slate-50 border border-slate-200 rounded-xl p-4 min-h-[100px]">
+                  <p class="text-slate-500 text-sm">Selecciona una fecha para ver los horarios disponibles.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3 - Confirmación -->
+            <div id="step3" class="step-panel hidden bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div class="mb-5">
+                <h2 class="text-2xl font-black text-slate-900 mb-1">Confirma tu reserva</h2>
+                <p class="text-sm text-slate-600">Revisa los datos antes de finalizar.</p>
+              </div>
+              <div id="resumenReserva" class="bg-slate-50 border border-slate-200 rounded-xl p-5 mb-5"></div>
+              <div>
+                <label class="form-label" for="reservaNotas">Notas adicionales (opcional)</label>
+                <textarea id="reservaNotas" rows="3" class="form-input" placeholder="Cuéntanos si tienes alguna preferencia o petición especial..."></textarea>
+              </div>
+            </div>
+
+            <!-- STEP 4 - Final -->
+            <div id="step4" class="step-panel hidden bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div class="mb-5">
+                <h2 class="text-2xl font-black text-slate-900 mb-1">Listo para reservar</h2>
+                <p class="text-sm text-slate-600">Confirma para registrar tu reserva. Podrás pagar inmediatamente o después desde tu perfil.</p>
+              </div>
+              <div id="resumenFinal"></div>
+            </div>
+
+            <!-- BOTONES -->
+            <div class="flex gap-3 pt-4">
+              <button id="btnPrev" class="btn-outline hidden">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                Atrás
+              </button>
+              <button id="btnNext" class="btn-primary ml-auto">
+                Siguiente
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+              <button id="btnSubmit" class="btn-primary ml-auto hidden">
+                Confirmar reserva
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- SIDEBAR - RESUMEN -->
+          <aside class="lg:col-span-1">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm sticky top-24">
+              <h4 class="font-bold text-slate-900 mb-4">Resumen</h4>
+              <div id="resumenTotal" class="text-3xl font-black text-lime-700 mb-4">S/ 0.00</div>
+              <p class="text-xs text-slate-500">El total se calcula según la pista y duración elegidas. Podrás pagar después si lo prefieres.</p>
+              <div class="mt-5 pt-5 border-t border-slate-200 space-y-2 text-sm">
+                <div class="flex items-center gap-2 text-slate-600">
+                  <svg class="w-5 h-5 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Sin comisiones ocultas
+                </div>
+                <div class="flex items-center gap-2 text-slate-600">
+                  <svg class="w-5 h-5 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Pago 100% seguro
+                </div>
+                <div class="flex items-center gap-2 text-slate-600">
+                  <svg class="w-5 h-5 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Cancelación flexible 24h
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#facc15"/>
+          <stop offset="100%" stop-color="#854d0e"/>
+        </linearGradient>
+        <radialGradient id="spot" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
+          <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="900" fill="url(#bg)"/>
+      <rect width="1200" height="900" fill="url(#spot)"/>
+      
+        <g transform="translate(450, 220)">
+          <path d="M 80 0 L 320 0 L 290 200 Q 200 240 110 200 Z" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="5"/>
+          <rect x="160" y="220" width="80" height="120" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="5"/>
+          <rect x="120" y="340" width="160" height="40" rx="6" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="5"/>
+          <circle cx="200" cy="100" r="40" fill="#facc15"/>
+          <path d="M 160 100 Q 200 75 240 100 M 160 100 Q 200 125 240 100" stroke="white" stroke-width="3" fill="none"/>
+          <polygon points="350,150 380,80 410,150" fill="#facc15" opacity="0.85"/>
+          <polygon points="20,150 50,80 80,150" fill="#facc15" opacity="0.85"/>
+          <polygon points="900,400 930,330 960,400" fill="#facc15" opacity="0.85"/>
+        </g>
+      <rect x="60" y="60" width="240" height="50" fill="rgba(15,23,42,0.7)"/>
+      <text x="180" y="93" text-anchor="middle" fill="white" font-size="20" font-weight="800" font-family="Inter, sans-serif" letter-spacing="3">TORNEOS</text>
+      <rect x="60" y="780" width="800" height="60" fill="rgba(15,23,42,0.7)"/>
+      <text x="80" y="820" fill="white" font-size="28" font-weight="800" font-family="Inter, sans-serif">Torneo Apertura 2026</text>
+    </svg>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro · Padel Premium Club</title>
+  <meta name="description" content="Crea tu cuenta gratuita en Padel Premium Club y empieza a reservar tus pistas de pádel.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main class="auth-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+          <div class="mb-6 text-center">
+            <h1 class="text-3xl font-black text-slate-900 mb-2">Crea tu cuenta</h1>
+            <p class="text-slate-600">Únete a la comunidad de Padel Premium Club. Es gratis y toma menos de 1 minuto.</p>
+          </div>
+
+          <form id="registerForm" class="space-y-5">
+            <div>
+              <label class="form-label" for="name">Nombre completo *</label>
+              <input type="text" name="name" id="name" required class="form-input" placeholder="Ej. Sebastián Castro" autocomplete="name">
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label" for="email">Correo electrónico *</label>
+                <input type="email" name="email" id="email" required class="form-input" placeholder="tu@correo.com" autocomplete="email">
+              </div>
+              <div>
+                <label class="form-label" for="phone">Teléfono *</label>
+                <input type="tel" name="phone" id="phone" required class="form-input" placeholder="+51 987 654 321" autocomplete="tel">
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="dni">DNI (opcional)</label>
+              <input type="text" name="dni" id="dni" class="form-input" placeholder="12345678" maxlength="12">
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label" for="password">Contraseña *</label>
+                <input type="password" name="password" id="password" required class="form-input" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+                <p class="text-xs text-slate-500 mt-1">Mínimo 6 caracteres</p>
+              </div>
+              <div>
+                <label class="form-label" for="password2">Confirmar contraseña *</label>
+                <input type="password" name="password2" id="password2" required class="form-input" placeholder="Repite tu contraseña" autocomplete="new-password">
+              </div>
+            </div>
+            <label class="flex items-start gap-2 text-sm text-slate-600">
+              <input type="checkbox" name="acceptTerms" required class="mt-1 rounded text-lime-500 focus:ring-lime-500">
+              <span>Acepto los <a href="terminos.html" class="text-lime-700 hover:text-lime-900 font-bold">términos y condiciones</a> y la <a href="privacidad.html" class="text-lime-700 hover:text-lime-900 font-bold">política de privacidad</a> de Padel Premium Club.</span>
+            </label>
+            <button type="submit" class="btn-primary w-full">
+              Crear cuenta
+            </button>
+          </form>
+
+          <div class="relative my-6">
+            <div class="divider-text">o</div>
+          </div>
+
+          <div class="text-center text-sm text-slate-600">
+            ¿Ya tienes cuenta? <a href="login.html" class="text-lime-700 hover:text-lime-900 font-bold">Inicia sesión aquí</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

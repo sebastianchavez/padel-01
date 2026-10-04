@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clases y Escuela · Padel Premium Club</title>
+  <meta name="description" content="Escuela de pádel para todas las edades. Escuela infantil, tecnificación juvenil, pádel adultos, femenino, senior y entrenamiento avanzado.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body data-page="clases" class="bg-white text-slate-900">
+
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Escuela de pádel</p>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Clases para todos</h1>
+        <p class="text-slate-600 text-lg max-w-2xl">Programas diseñados por coaches profesionales para que aprendas y mejores tu juego, sin importar tu nivel ni edad.</p>
+      </div>
+    </section>
+
+    <!-- Horario semanal -->
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Horario semanal</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">Cuándo son las clases</h2>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <div id="clasesTabla"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lista de clases -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Programas</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">Encuentra tu nivel</h2>
+        </div>
+
+        <!-- Filtros -->
+        <div class="flex flex-wrap gap-2 mb-8 justify-center">
+          <button data-clase-filter="todas" class="tab-btn active">Todas</button>
+          <button data-clase-filter="Inicial" class="tab-btn">Inicial</button>
+          <button data-clase-filter="Intermedio" class="tab-btn">Intermedio</button>
+          <button data-clase-filter="Avanzado" class="tab-btn">Avanzado</button>
+          <button data-clase-filter="Todos" class="tab-btn">Todos los niveles</button>
+        </div>
+
+        <div id="clasesLista" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- Profesores -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <p class="text-lime-700 uppercase tracking-[0.25em] text-xs font-bold mb-3">Nuestro equipo</p>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 section-title section-title-center inline-block">Coaches certificados</h2>
+        </div>
+        <div id="profesoresLista" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-lime-500 to-green-700 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">¿Listo para empezar?</h2>
+        <p class="text-lg text-lime-50 mb-8">Inscríbete en cualquiera de nuestros programas. Primera clase de prueba gratis.</p>
+        <a href="reserva.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-100 text-slate-900 font-black text-lg rounded-lg shadow-2xl transition-all hover:-translate-y-1">
+          Reservar primera clase
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/reservas.js"></script>
+  <script src="../assets/js/pago.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

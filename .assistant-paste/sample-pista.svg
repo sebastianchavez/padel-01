@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#bef264"/>
+          <stop offset="100%" stop-color="#365314"/>
+        </linearGradient>
+        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e293b"/>
+          <stop offset="100%" stop-color="#0f172a"/>
+        </linearGradient>
+        <radialGradient id="light" cx="50%" cy="0%" r="80%">
+          <stop offset="0%" stop-color="#facc15" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#facc15" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="800" height="220" fill="url(#wall)"/>
+      <rect y="220" width="800" height="280" fill="url(#floor)"/>
+      <rect width="800" height="500" fill="url(#light)"/>
+      <rect x="40" y="60" width="30" height="340" fill="rgba(255,255,255,0.12)" stroke="white" stroke-width="2"/>
+      <rect x="730" y="60" width="30" height="340" fill="rgba(255,255,255,0.12)" stroke="white" stroke-width="2"/>
+      <line x1="40" y1="220" x2="760" y2="220" stroke="white" stroke-width="3" opacity="0.9"/>
+      <line x1="40" y1="380" x2="760" y2="380" stroke="white" stroke-width="2" opacity="0.7"/>
+      <line x1="200" y1="240" x2="200" y2="500" stroke="white" stroke-width="2" opacity="0.7"/>
+      <line x1="600" y1="240" x2="600" y2="500" stroke="white" stroke-width="2" opacity="0.7"/>
+      <line x1="280" y1="290" x2="280" y2="500" stroke="white" stroke-width="1.5" opacity="0.6"/>
+      <line x1="520" y1="290" x2="520" y2="500" stroke="white" stroke-width="1.5" opacity="0.6"/>
+      <rect x="396" y="220" width="8" height="160" fill="white" opacity="0.9"/>
+      <line x1="40" y1="220" x2="760" y2="220" stroke="#facc15" stroke-width="2" opacity="0.8"/>
+      <circle cx="130" cy="450" r="14" fill="#facc15" opacity="0.95"/>
+      <path d="M 116 450 Q 130 442 144 450 M 116 450 Q 130 458 144 450" stroke="white" stroke-width="1.2" fill="none"/>
+      <circle cx="670" cy="430" r="11" fill="#facc15" opacity="0.9"/>
+      <path d="M 659 430 Q 670 423 681 430 M 659 430 Q 670 437 681 430" stroke="white" stroke-width="1" fill="none"/>
+      <rect x="240" y="60" width="320" height="42" fill="rgba(15,23,42,0.6)" stroke="#facc15" stroke-width="1.5"/>
+      <text x="400" y="89" text-anchor="middle" fill="white" font-size="22" font-weight="900" font-family="Inter, sans-serif" letter-spacing="3">CRISTAL</text>
+      <rect x="40" y="40" width="140" height="28" fill="#0f172a" stroke="white" stroke-width="1.5"/>
+      <text x="110" y="59" text-anchor="middle" fill="white" font-size="13" font-weight="800" font-family="Inter, sans-serif">TECHADA</text>
+    </svg>
